@@ -1,0 +1,17 @@
+machine:
+  python:
+    version: 3.4.3
+
+dependencies:
+  override:
+    - pip install -r requirements.txt
+
+test:
+  override:
+    - python ./manager.py test
+
+deployment:
+  master:
+     branch: master
+     commands:
+       - ssh -i /home/ubuntu/.ssh/id_production deploy@builtbykrit.com "/var/www/example/atomic_deployments.sh"
